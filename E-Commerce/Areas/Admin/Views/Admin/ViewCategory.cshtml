@@ -1,0 +1,59 @@
+﻿@model IEnumerable<E_Commerce.Models.Category>
+
+@{
+    ViewData["Title"] = "ViewCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+
+<html>
+<div class="content-wrapper" style="width:100%">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">View Category</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">View Category</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.category_name)
+                </th>
+               
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category_name)
+                    </td>
+                    
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.cat_id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.cat_id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.cat_id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+</html>
